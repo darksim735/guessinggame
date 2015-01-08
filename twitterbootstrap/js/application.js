@@ -14,29 +14,40 @@ $(document).ready(function(){
     
     // game logic
    
-   
-
+    if (remaining > 0){   
+    
     // if incorrect, decrement remaining, remove old guess and append new
     $("#submit").on("click", function(){
     // runs when submit button is clicked
-    yourGuess = $(".input").val();
-    alert("you guessed: " + yourGuess);
+        yourGuess = $(".input").val();
+        alert("you guessed: " + yourGuess);
     //
-    if (yourGuess != realNumber){
-    remaining = remaining - 1;;
-    guesses = $("<p>You have " + remaining + " guesses left</p>");
-    alert("remaining guesses: " + remaining);
-    $(".container p").remove();
-    $(".container").append(guesses);
-    }
+        if (yourGuess != realNumber){
+            remaining = remaining - 1;
+            guesses = $("<p>You have " + remaining + " guesses left</p>");
+            alert("remaining guesses: " + remaining);
+            $(".container p").remove();
+            $(".container").append(guesses);
+            }
     
-    if (yourGuess == realNumber){
-        alert("you win!");
-     }
+        if (yourGuess == realNumber){
+            alert("you win!");
+            }
 
     });
 
- 
+    }
+    else
+    {
+    alert("try hit play again to restart game");
+    }
+
+
+
+    $("#reveal").on("click", function(){                                                    
+    var solution = $("<p>The answer is:  " + realNumber + "</p>");                                                 
+    $("h1").append(solution);                                     
+    });                  
 
 
     
