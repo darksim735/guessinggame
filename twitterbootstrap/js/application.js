@@ -11,6 +11,10 @@ $(document).ready(function(){
 
     var guesses = $("<p>You have " + remaining + " guesses left</p>");
     $(".container").append(guesses);
+    
+    // game logic
+   
+   
 
     // if incorrect, decrement remaining, remove old guess and append new
     $("#submit").on("click", function(){
@@ -18,14 +22,23 @@ $(document).ready(function(){
     yourGuess = $(".input").val();
     alert("you guessed: " + yourGuess);
     //
-    if (yourGuess !== realNumber){
+    if (yourGuess != realNumber){
     remaining = remaining - 1;;
     guesses = $("<p>You have " + remaining + " guesses left</p>");
     alert("remaining guesses: " + remaining);
     $(".container p").remove();
     $(".container").append(guesses);
     }
+    
+    if (yourGuess == realNumber){
+        alert("you win!");
+     }
 
     });
+
+ 
+
+
+    
 });
 
