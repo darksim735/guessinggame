@@ -1,6 +1,6 @@
 $(document).ready(function(){
     var remaining = 5;
-
+    var yourGuess = 0;
 
     // set random number
     function getRandomInt(min, max){
@@ -15,7 +15,17 @@ $(document).ready(function(){
     // if incorrect, decrement remaining, remove old guess and append new
     $("#submit").on("click", function(){
     // runs when submit button is clicked
-    alert("you hit submit");
+    yourGuess = $(".input").val();
+    alert("you guessed: " + yourGuess);
+    //
+    if (yourGuess !== realNumber){
+    remaining = remaining - 1;;
+    guesses = $("<p>You have " + remaining + " guesses left</p>");
+    alert("remaining guesses: " + remaining);
+    $(".container p").remove();
+    $(".container").append(guesses);
+    }
+
     });
 });
 
