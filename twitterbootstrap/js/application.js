@@ -1,21 +1,32 @@
 $(document).ready(function(){
-    var remaining = 5;
-    var yourGuess = 0;
+   
+    var remaining;
+    var yourGuess;
     var numbersGuessed = [];
+    var realNumber;
+    var guesses;
+
+    function newGame(){
+    remaining = 5;
+    yourGuess = 0;
+    numbersGuessed = [];
 
     // set random number
     function getRandomInt(min, max){
     return Math.floor(Math.random()*(max-min+1))+min;
     }
-    var realNumber = getRandomInt(1, 100);
+
+    realNumber = getRandomInt(1, 100);
     alert("Random number is: " + realNumber);
 
-    var guesses = $("<p>You have " + remaining + " guesses left</p>");
+    guesses = $("<p>You have " + remaining + " guesses left</p>");
     $(".container").append(guesses);
     
+    }
+
     // game logic
    
-       
+    newGame(); // instantiates new game   
     
     // if incorrect, decrement remaining, remove old guess and append new
     $("#submit").on("click", function(){
