@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var remaining = 5;
     var yourGuess = 0;
+    var numbersGuessed = [];
 
     // set random number
     function getRandomInt(min, max){
@@ -14,7 +15,7 @@ $(document).ready(function(){
     
     // game logic
    
-    if (remaining > 0){   
+       
     
     // if incorrect, decrement remaining, remove old guess and append new
     $("#submit").on("click", function(){
@@ -23,24 +24,33 @@ $(document).ready(function(){
         alert("you guessed: " + yourGuess);
     //
         if (yourGuess != realNumber){
+             
+            if ($.inArray(yourGuess, numbersGuessed) >= 0)     
+                {
+                console.log("you already guessed this");
+                remaining += 1;
+                }
+
             remaining = remaining - 1;
             guesses = $("<p>You have " + remaining + " guesses left</p>");
             alert("remaining guesses: " + remaining);
             $(".container p").remove();
             $(".container").append(guesses);
-            }
+            numbersGuessed.push(yourGuess); // store guesses in array
+        }   
+            
     
         if (yourGuess == realNumber){
             alert("you win!");
+            // TODO: animate when you win
             }
 
     });
 
-    }
-    else
-    {
-    alert("try hit play again to restart game");
-    }
+    
+   
+    
+       
 
 
 
