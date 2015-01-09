@@ -40,8 +40,9 @@ $(document).ready(function(){
     $("h1 p").remove();
     });    
 
-    // if incorrect, decrement remaining, remove old guess and append new
-    $("#submit").on("click", function(){
+   
+            
+    function checkGuess(){
     // runs when submit button is clicked
         yourGuess = $(".input").val();
         alert("you guessed: " + yourGuess);
@@ -68,10 +69,11 @@ $(document).ready(function(){
             // TODO: animate when you win
             }
 
-    });
+    }
 
     
-   
+    // if incorrect, decrement remaining, remove old guess and append new
+    $("#submit").on("click", function(){checkGuess();}); 
     
        
 
