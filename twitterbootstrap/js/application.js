@@ -10,6 +10,11 @@ $(document).ready(function(){
     remaining = 5;
     yourGuess = 0;
     numbersGuessed = [];
+    
+    // clear old paragraphs
+    $(".container").children("p").remove();
+    $(".buttons p").remove();
+    $("h1 p").remove();
 
     // set random number
     function getRandomInt(min, max){
@@ -28,6 +33,13 @@ $(document).ready(function(){
    
     newGame(); // instantiates new game   
     
+    // listen for clicks on reset game button
+    $("#restart").on("click", function(){
+    newGame(); // resets random number, guesses, etc...
+    $(".buttons p").remove();
+    $("h1 p").remove();
+    });    
+
     // if incorrect, decrement remaining, remove old guess and append new
     $("#submit").on("click", function(){
     // runs when submit button is clicked
@@ -45,7 +57,7 @@ $(document).ready(function(){
             remaining = remaining - 1;
             guesses = $("<p>You have " + remaining + " guesses left</p>");
             alert("remaining guesses: " + remaining);
-            $(".container p").remove();
+            $(".container").children("p").remove();
             $(".container").append(guesses);
             numbersGuessed.push(yourGuess); // store guesses in array
         }   
@@ -66,6 +78,7 @@ $(document).ready(function(){
 
 
     $("#reveal").on("click", function(){                                                    
+    $("h1 p").remove();
     var solution = $("<p>The answer is:  " + realNumber + "</p>");                                                 
     $("h1").append(solution);                                     
     });                  
