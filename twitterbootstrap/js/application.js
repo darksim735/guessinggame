@@ -69,7 +69,7 @@ $(document).ready(function(){
 
             remaining = remaining - 1;
             guesses = $("<p>You have " + remaining + " guesses left</p>");
-            alert("remaining guesses: " + remaining);
+//            alert("remaining guesses: " + remaining);
             $(".container").children("p").remove();
             $(".container").append(guesses);
             numbersGuessed.push(yourGuess); // store guesses in array
