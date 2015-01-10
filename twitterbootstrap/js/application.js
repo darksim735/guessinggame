@@ -7,13 +7,17 @@ $(document).ready(function(){
     var guesses;
     var gameActive = true;
     var prevGuess = 0;
+    var hotcold;
+    var higherlower;
 
     function newGame(){
     remaining = 5;
     yourGuess = 0;
     numbersGuessed = [];
     gameActive = true;
-    
+    hotcold = "";
+    higherlower = "";
+
     // clear old paragraphs
     $(".container").children("p").remove();
     $(".buttons p").remove();
@@ -71,10 +75,23 @@ $(document).ready(function(){
             numbersGuessed.push(yourGuess); // store guesses in array
             
             //TODO: add logic for comparing guess to answer
-            if (realNumber > yourGuess)
-            {alert("Guess higher");}
-            if (realNumber < yourGuess)
-            {alert("Guess lower");}
+            if ((realNumber > yourGuess)&&(remaining > 0))
+            {
+                alert("Guess higher");
+                higherlower = $("<p>You should guess higher.</p>");
+                
+              //  $(".container").children("p").remove();
+                $(".container").append(higherlower);
+            }
+            if ((realNumber < yourGuess)&&(remaining > 0))
+            {
+                alert("Guess lower");
+                higherlower = $("<p>You should guess lower.</p>");
+                
+              //  $(".container").children("p").remove();
+                $(".container").append(higherlower);
+            }
+
 
             //TODO: calculate differene between previous guess and real guess
             // determine if hot or cold
