@@ -71,6 +71,7 @@ $(document).ready(function(){
             guesses = $("<p>You have " + remaining + " guesses left</p>");
 //            alert("remaining guesses: " + remaining);
             $(".container").children("p").remove();
+            $(".container").append("<p>You guessed: " + yourGuess + "</p>");
             $(".container").append(guesses);
             numbersGuessed.push(yourGuess); // store guesses in array
             
