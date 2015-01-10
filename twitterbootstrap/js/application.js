@@ -6,6 +6,7 @@ $(document).ready(function(){
     var realNumber;
     var guesses;
     var gameActive = true;
+    var prevGuess = 0;
 
     function newGame(){
     remaining = 5;
@@ -68,7 +69,20 @@ $(document).ready(function(){
             $(".container").children("p").remove();
             $(".container").append(guesses);
             numbersGuessed.push(yourGuess); // store guesses in array
-        
+            
+            //TODO: add logic for comparing guess to answer
+            if (realNumber > yourGuess)
+            {alert("Guess higher");}
+            if (realNumber < yourGuess)
+            {alert("Guess lower");}
+
+            //TODO: calculate differene between previous guess and real guess
+            // determine if hot or cold
+            //
+
+            prevGuess = yourGuess; // update previous guess and store for next round
+            
+
             if (remaining == 0){
                 //TODO: set game active variable to false
                 alert("you lose");
