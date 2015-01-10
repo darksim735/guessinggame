@@ -5,11 +5,13 @@ $(document).ready(function(){
     var numbersGuessed = [];
     var realNumber;
     var guesses;
+    var gameActive = true;
 
     function newGame(){
     remaining = 5;
     yourGuess = 0;
     numbersGuessed = [];
+    gameActive = true;
     
     // clear old paragraphs
     $(".container").children("p").remove();
@@ -43,6 +45,9 @@ $(document).ready(function(){
    
             
     function checkGuess(){
+
+        if (gameActive == true){
+
     // runs when submit button is clicked
         yourGuess = $(".input").val();
         alert("you guessed: " + yourGuess);
@@ -63,7 +68,14 @@ $(document).ready(function(){
             $(".container").children("p").remove();
             $(".container").append(guesses);
             numbersGuessed.push(yourGuess); // store guesses in array
-        }   
+        
+            if (remaining == 0){
+                //TODO: set game active variable to false
+                alert("you lose");
+                gameActive = false; // set game to inactive
+            }
+
+        } // end of if your guess is not equal to real number  
             
         // TODO: else if guesses == 0
         // set gameactive to false
@@ -75,6 +87,8 @@ $(document).ready(function(){
             alert("you win!");
             // TODO: animate when you win
             }
+
+        } // end of gameActive if clause
 
     }
 
