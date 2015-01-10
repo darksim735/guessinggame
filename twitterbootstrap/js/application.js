@@ -55,7 +55,7 @@ $(document).ready(function(){
 
     // runs when submit button is clicked
         yourGuess = $(".input").val();
-        alert("you guessed: " + yourGuess);
+//        alert("you guessed: " + yourGuess);
     
         //  TODO: add && if guesses > 0 
         //
