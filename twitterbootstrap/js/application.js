@@ -93,6 +93,21 @@ $(document).ready(function(){
             }
 
 
+            // HOT or COLD
+            if ((tempCheck(yourGuess) == "hot")&&(remaining > 0))
+            {
+             hotcold = $("<p>Your guess is hotter.</p>");
+             $(".container").append(hotcold);
+            }
+            
+
+             if ((tempCheck(yourGuess) == "cold")&&(remaining > 0))
+             {
+             hotcold = $("<p>Your guess is colder.</p>");
+             $(".container").append(hotcold);
+             }
+
+
             //TODO: calculate differene between previous guess and real guess
             // determine if hot or cold
             //
@@ -133,10 +148,22 @@ $(document).ready(function(){
         }
     });   
 
-    // function tempCheck() {
+    function tempCheck(currentGuess) {
     // check whether hot or cold
     // TODO: store old guesses to compare difference
-    //}   
+    var lastGap = Math.abs(prevGuess - realNumber);
+    var thisGap = Math.abs(currentGuess - realNumber);
+    if (lastGap > thisGap)
+     {
+     return "hot";
+     }
+    
+    if (thisGap > lastGap)
+    {
+    return "cold";
+    }
+    
+    }   
 
 
 
