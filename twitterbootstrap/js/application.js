@@ -46,7 +46,9 @@ $(document).ready(function(){
     // runs when submit button is clicked
         yourGuess = $(".input").val();
         alert("you guessed: " + yourGuess);
-    //
+    
+        //  TODO: add && if guesses > 0 
+        //
         if (yourGuess != realNumber){
              
             if ($.inArray(yourGuess, numbersGuessed) >= 0)     
@@ -63,7 +65,12 @@ $(document).ready(function(){
             numbersGuessed.push(yourGuess); // store guesses in array
         }   
             
-    
+        // TODO: else if guesses == 0
+        // set gameactive to false
+        // display gameover
+        // new game button set gameactive to true
+        //
+
         if (yourGuess == realNumber){
             alert("you win!");
             // TODO: animate when you win
@@ -74,8 +81,19 @@ $(document).ready(function(){
     
     // if incorrect, decrement remaining, remove old guess and append new
     $("#submit").on("click", function(){checkGuess();}); 
-    
-       
+    $(".input").keydown(function(event){
+        // if key pressed was enter
+        if (event.which == 13 || event.keyCode == 13){
+        checkGuess();
+        }
+    });   
+
+    // function tempCheck() {
+    // check whether hot or cold
+    // TODO: store old guesses to compare difference
+    //}   
+
+
 
 
 
