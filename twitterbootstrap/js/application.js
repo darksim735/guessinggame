@@ -77,7 +77,7 @@ $(document).ready(function(){
             //TODO: add logic for comparing guess to answer
             if ((realNumber > yourGuess)&&(remaining > 0))
             {
-                alert("Guess higher");
+                //alert("Guess higher");
                 higherlower = $("<p>You should guess higher.</p>");
                 
               //  $(".container").children("p").remove();
@@ -85,7 +85,7 @@ $(document).ready(function(){
             }
             if ((realNumber < yourGuess)&&(remaining > 0))
             {
-                alert("Guess lower");
+               // alert("Guess lower");
                 higherlower = $("<p>You should guess lower.</p>");
                 
               //  $(".container").children("p").remove();
