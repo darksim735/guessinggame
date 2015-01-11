@@ -47,7 +47,19 @@ $(document).ready(function(){
     $("h1 p").remove();
     });    
 
-   
+
+    function validInput(guess){
+        // check if guess is between 1 and 100
+        // check if guess is real number
+        if ( ((guess < 100)&&(guess > 1)) && ((guess % 1) == 0) )
+        {
+        return true;
+        }
+        else
+        {
+        return false;
+        }
+    } 
             
     function checkGuess(){
 
@@ -63,9 +75,17 @@ $(document).ready(function(){
              
             if ($.inArray(yourGuess, numbersGuessed) >= 0)     
                 {
+                //TODO: add element to show already guessed
                 console.log("you already guessed this");
                 remaining += 1;
                 }
+
+            else if ((validInput(yourGuess) == false))
+            {
+                // TODO: add element to show invalid input
+                console.log("invalid input, try a different guess");
+                remaining += 1;
+            }
 
             remaining = remaining - 1;
             guesses = $("<p>You have " + remaining + " guesses left</p>");
