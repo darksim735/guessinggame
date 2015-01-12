@@ -32,7 +32,7 @@ $(document).ready(function(){
     }
 
     realNumber = getRandomInt(1, 100);
-    alert("Random number is: " + realNumber);
+//    alert("Random number is: " + realNumber);
 
     guesses = $("<p>You have " + remaining + " guesses left</p>");
     $(".container").append(guesses);
@@ -122,13 +122,20 @@ $(document).ready(function(){
             {
              hotcold = $("<p>Your guess is hotter.</p>");
              $(".container").append(hotcold);
+
+             // add temperature gauge
+             $(".container").append("<p>You are " + gettingClose(yourGuess) +".</p>");
             }
             
 
              if ((tempCheck(yourGuess) == "cold")&&(remaining > 0))
              {
              hotcold = $("<p>Your guess is colder.</p>");
+             if (remaining > 4){
              $(".container").append(hotcold);
+             }
+             // add temperature gauge
+             $(".container").append("<p>You are " + gettingClose(yourGuess) +".</p>");
              }
 
 
@@ -192,8 +199,23 @@ $(document).ready(function(){
     
     }   
 
-
-
+    // indicates if close or way off
+    function gettingClose(currentGuess){
+    var thisGap = Math.abs(currentGuess - realNumber);
+    if (thisGap < 5){
+       // alert("You are burning");
+    return "burning";
+    }
+    if ((thisGap >= 5)&&(thisGap < 20)){
+       // alert("You are warm");
+    return "warm";
+    }
+    if (thisGap >= 20){
+       // alert("You are cold");
+    return "cold";
+    }
+        
+    }
 
 
     $("#reveal").on("click", function(){                                                    
