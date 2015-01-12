@@ -18,6 +18,9 @@ $(document).ready(function(){
     hotcold = "";
     higherlower = "";
 
+    // set header to Guess The Number
+    $("h1").text("Guess The Number");
+
     // clear old paragraphs
     $(".container").children("p").remove();
     $(".buttons p").remove();
@@ -151,8 +154,9 @@ $(document).ready(function(){
         //
 
         if (yourGuess == realNumber){
-            alert("you win!");
+            //alert("you win!");
             // TODO: animate when you win
+            $("h1").text("You Win!!!");
             }
 
         } // end of gameActive if clause
