@@ -141,7 +141,8 @@ $(document).ready(function(){
 
             if (remaining == 0){
                 //TODO: set game active variable to false
-                alert("you lose");
+                //alert("you lose");
+                $("h1").text("You Lose!");
                 gameActive = false; // set game to inactive
             }
 
@@ -157,6 +158,7 @@ $(document).ready(function(){
             //alert("you win!");
             // TODO: animate when you win
             $("h1").text("You Win!!!");
+            gameActive = false;
             }
 
         } // end of gameActive if clause
